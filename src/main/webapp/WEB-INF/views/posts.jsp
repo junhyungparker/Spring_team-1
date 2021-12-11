@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>free board</title>
+<title>신청내역 확인폼</title>
 <style>
 #list {
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
@@ -36,7 +36,7 @@
 </script>
 </head>
 <body>
-<h1>자유게시판</h1>
+<h1>신청내역 확인폼</h1>
 
 <table id="list" width="90%">
 <tr>
@@ -59,11 +59,11 @@
 		<td>${u.getContent()}</td>
 		<td>${u.getPhone()}</td>
 		<td>${u.getRegdate()}</td>
-		<td><a href="editpost/${u.seq}">글 수정</a></td>
-		<td><a href="javascript:delete_ok('${u.seq}')">글삭제</a></td>
+		<td><a href="editpost/${u.seq}">예약 수정</a></td>
+		<td><a href="javascript:delete_ok('${u.seq}')">예약 삭제</a></td>
 	</tr>
 </c:forEach>
 </table>
-<br/><button type ="button" onclick="location.href='add'">새글쓰기</button>
+<br/><button type ="button" onclick="location.href='add'">새 예약 신청하기</button>
 </body>
 </html>
