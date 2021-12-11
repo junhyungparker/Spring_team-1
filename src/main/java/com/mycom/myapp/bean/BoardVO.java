@@ -6,6 +6,7 @@ public class BoardVO {
 	private int id;
 	private String category;
 	private String writer;
+	private String gender;
 	private String birthDate;
 	private String content;
 	private String phone;
@@ -27,6 +28,12 @@ public class BoardVO {
 	}
 	public void setWriter(String writer) {
 		this.writer = writer;
+	}
+	public String getGender() {
+		return gender;
+	}
+	public void setGender(String gender) {
+		this.gender = gender;
 	}
 	public String getBirthDate() {
 		return birthDate;
