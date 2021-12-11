@@ -41,19 +41,23 @@
 <table id="list" width="90%">
 <tr>
 	<th>Id</th>
-	<th>Title</th>
+	<th>Category</th>
 	<th>Writer</th>
+	<th>Birthdate</th>
 	<th>Content</th>
-	<th>Regdate</th>
+	<th>Phone</th>
+	<th>Date</th>
 	<th>Edit</th>
 	<th>Delete</th>
 </tr>
 <c:forEach items="${list}" var="u">
 	<tr>
-		<td>${u.getSeq()}</td>
-		<td>${u.getTitle()}</td>
+		<td>${u.getid()}</td>
+		<td>${u.getCategory}</td>
 		<td>${u.getWriter()}</td>
+		<td>${u.getBirthDate()}</td>
 		<td>${u.getContent()}</td>
+		<td>${u.getPhone()}</td>
 		<td>${u.getRegdate()}</td>
 		<td><a href="editpost/${u.seq}">글 수정</a></td>
 		<td><a href="javascript:delete_ok('${u.seq}')">글삭제</a></td>
