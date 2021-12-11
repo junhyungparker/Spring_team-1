@@ -30,6 +30,8 @@ public class BoardDAO {
 	
 	private final String BOARD_INSERT = "insert into BOARD2 (category, writer, birthDate, content, phone) values (?,?,?,?,?)";
 	private final String BOARD_UPDATE = "update BOARD2 set category=?, writer=?, birthDate=?, content=?, phone=? where id=?";
+	private final String BOARD_INSERT = "insert into BOARD2 (category, writer, gender, birthDate, content, phone) values (?,?,?,?,?,?)";
+	private final String BOARD_UPDATE = "update BOARD2 set category=?, writer=?, gender=?, birthDate=?, content=?, phone=? where id=?";
 	private final String BOARD_DELETE = "delete from BOARD2  where id=?";
 	private final String BOARD_GET = "select * from BOARD2  where id=?";
 	private final String BOARD_LIST = "select * from BOARD2 order by id desc";
@@ -37,6 +39,7 @@ public class BoardDAO {
 	
 		public int insertBoard(BoardVO vo) {
 			return template.update(BOARD_INSERT, new Object[] {vo.getCategory(),vo.getWriter(),vo.getBirthDate(), vo.getContent(), vo.getPhone()});
+			return template.update(BOARD_INSERT, new Object[] {vo.getCategory(),vo.getWriter(), vo.getGender(), vo.getBirthDate(), vo.getContent(), vo.getPhone()});
 		}
 		
 		public int deleteBoard(int id) {
@@ -45,6 +48,7 @@ public class BoardDAO {
 		
 		public int updateBoard(BoardVO vo) {
 			return template.update(BOARD_UPDATE,new Object[] {vo.getCategory(),vo.getWriter(),vo.getBirthDate(), vo.getContent(), vo.getPhone()});
+			return template.update(BOARD_UPDATE,new Object[] {vo.getCategory(),vo.getWriter(), vo.getGender(), vo.getBirthDate(), vo.getContent(), vo.getPhone()});
 		}
 		
 		public BoardVO getBoard(int id) {
@@ -60,6 +64,7 @@ public class BoardDAO {
 					data.setId(rs.getInt("id"));
 					data.setCategory(rs.getString("category"));
 					data.setWriter(rs.getString("writer"));
+					data.setGender(rs.getString("gender"));
 					data.setBirthDate(rs.getString("birthDate"));
 					data.setContent(rs.getString("content"));
 					data.setPhone(rs.getString("phone"));
