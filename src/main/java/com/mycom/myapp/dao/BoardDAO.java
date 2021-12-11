@@ -28,15 +28,15 @@ public class BoardDAO {
 		this.template = template;
 	}
 	
-	private final String BOARD_INSERT = "insert into BOARD (title, writer, content) values (?,?,?)";
-	private final String BOARD_UPDATE = "update BOARD set title=?, writer=?, content=? where seq=?";
-	private final String BOARD_DELETE = "delete from BOARD  where seq=?";
-	private final String BOARD_GET = "select * from BOARD  where seq=?";
-	private final String BOARD_LIST = "select * from BOARD order by seq desc";
+	private final String BOARD_INSERT = "insert into BOARD2 (category, writer, birthDate, content, phone) values (?,?,?,?,?)";
+	private final String BOARD_UPDATE = "update BOARD2 set category=?, writer=?, birthDate=?, content=?, phone=? where id=?";
+	private final String BOARD_DELETE = "delete from BOARD2  where id=?";
+	private final String BOARD_GET = "select * from BOARD2  where id=?";
+	private final String BOARD_LIST = "select * from BOARD2 order by id desc";
 	
 	
 		public int insertBoard(BoardVO vo) {
-			return template.update(BOARD_INSERT, new Object[] {vo.getTitle(),vo.getWriter(),vo.getContent()});
+			return template.update(BOARD_INSERT, new Object[] {vo.getCategory(),vo.getWriter(),vo.getBirthDate(), vo.getContent(), vo.getPhone()});
 		}
 		
 		public int deleteBoard(int id) {
@@ -44,11 +44,11 @@ public class BoardDAO {
 		}
 		
 		public int updateBoard(BoardVO vo) {
-			return template.update(BOARD_UPDATE,new Object[] {vo.getTitle(),vo.getWriter(),vo.getContent(),vo.getSeq()});
+			return template.update(BOARD_UPDATE,new Object[] {vo.getCategory(),vo.getWriter(),vo.getBirthDate(), vo.getContent(), vo.getPhone()});
 		}
 		
-		public BoardVO getBoard(int seq) {
-			return template.queryForObject(BOARD_GET,new Object[] {seq},new BeanPropertyRowMapper<BoardVO>(BoardVO.class));
+		public BoardVO getBoard(int id) {
+			return template.queryForObject(BOARD_GET,new Object[] {id},new BeanPropertyRowMapper<BoardVO>(BoardVO.class));
 		}
 
 		public List<BoardVO> getBoardList(){
@@ -57,11 +57,13 @@ public class BoardDAO {
 				@Override
 				public BoardVO mapRow(ResultSet rs,int rowNum) throws SQLException{
 					BoardVO data = new BoardVO();
-					data.setSeq(rs.getInt("seq"));
-					data.setTitle(rs.getString("title"));
-					data.setContent(rs.getString("content"));
-					data.setRegdate(rs.getDate("regdate"));
+					data.setId(rs.getInt("id"));
+					data.setCategory(rs.getString("category"));
 					data.setWriter(rs.getString("writer"));
+					data.setBirthDate(rs.getString("birthDate"));
+					data.setContent(rs.getString("content"));
+					data.setPhone(rs.getString("phone"));
+					data.setRegdate(rs.getDate("regdate"));
 					return data;
 				}
 			});
